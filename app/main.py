@@ -24,16 +24,18 @@
 # #debug = True
 # #it will print out possible python errors on the webpage
 
-from flask import Flask, render_template
-
+from flask import Flask
 app = Flask(__name__)
+
 @app.route('/')
 def index():
-	return render_template('home.html')
+	return 'Flask is working'
 
-@app.route('/about/')
-def about():
-	return render_template('about.html')
+
+#how to use dyanamically
+@app.route('/profile/<username>')
+def profile(username):
+	return "<h2> Hye %s </h2> " %username
 
 
 if __name__ == "__main__":
