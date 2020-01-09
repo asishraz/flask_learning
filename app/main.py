@@ -24,13 +24,13 @@
 # #debug = True
 # #it will print out possible python errors on the webpage
 
-from flask import Flask
+from flask import Flask, request
 app = Flask(__name__)
 
-@app.route('/')
-#the above line is a decorator which binds the below function and returns some strings
-def index():
-	return 'Flask is working'
+# @app.route('/')
+# #the above line is a decorator which binds the below function and returns some strings
+# def index():
+# 	return 'Flask is working'
 
 
 #how to use dyanamically
@@ -39,11 +39,16 @@ def index():
 def profile(username):
 	return "<h2> Hye %s </h2> " %username
 
-#passing integer data type to the url
-#for integer data type, we have to mention the data type here
-@app.route('/post/<int:post_id>')
-def post_id(post_id):
-	return "<h1> <i> the post number is: %s </i> </h3>" %post_id
+#how to know, which method is being used, first we need to import "request" package in the code from the library "flask"
+@app.route('/')
+def index():
+	return "the method used here is: %s" %request.method
+
+# #passing integer data type to the url
+# #for integer data type, we have to mention the data type here
+# @app.route('/post/<int:post_id>')
+# def post_id(post_id):
+# 	return "<h1> <i> the post number is: %s </i> </h3>" %post_id
 
 
 if __name__ == "__main__":
