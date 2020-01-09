@@ -50,6 +50,14 @@ def index():
 # def post_id(post_id):
 # 	return "<h1> <i> the post number is: %s </i> </h3>" %post_id
 
+#checking for the both the methods POST or GET
+@app.route('/post/', methods=["GET", "POST"])
+def post():
+	if request.method == "POST":
+		return "you are using post method"
+	else:
+		return "you are using %s method" %request.method
+
 
 if __name__ == "__main__":
 	app.run(debug=True)
